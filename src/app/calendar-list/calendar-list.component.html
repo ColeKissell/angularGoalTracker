@@ -1,0 +1,18 @@
+
+<hr/>
+<hr/>
+
+<div *ngIf="auth.user$ | async">
+  <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>
+  <!-- <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button> -->
+  
+  <div *ngFor="let item of auth.calendarItems">
+      <h3>{{ item.summary }} - {{ item.status }}</h3>
+      <p><em>Created {{ item.created }}</em></p>
+      <p>{{ item.description }}</p>
+      <hr/>
+      <!-- <app-calendar-detail></app-calendar-detail> -->
+  </div>
+
+</div>
+

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CalendarListComponent } from './calendar-list/calendar-list.component';
+import { CalendarDetailComponent } from './calendar-detail/calendar-detail.component';
 
 // Add your project credentials
 // Then use it in the imports section below
@@ -22,7 +24,9 @@ const yourFirebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalendarListComponent,
+    CalendarDetailComponent
   ],
   imports: [
     BrowserModule,
