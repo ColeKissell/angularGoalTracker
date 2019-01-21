@@ -9,16 +9,16 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // Add your project credentials
 // Then use it in the imports section below
 const yourFirebaseConfig = {
-  apiKey: '<your-key>',
-  authDomain: '<your-project-authdomain>',
-  databaseURL: '<your-database-URL>',
-  projectId: '<your-project-id>',
-  storageBucket: '<your-storage-bucket>',
-  messagingSenderId: '<your-messaging-sender-id>'
+  apiKey: 'AIzaSyDNtX317n0o6xIfDHQKQp1pqbuVqn-NAq4',
+  authDomain: 'life-manager-227504.firebaseapp.com',
+  databaseURL: 'https://life-manager-227504.firebaseio.com',
+  projectId: 'life-manager-227504',
+  storageBucket: 'life-manager-227504.appspot.com',
+  messagingSenderId: '289902267625'
 };
 
 // Delete Me!
-import { firebase } from '../env';
+// import { environment.firebase } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { firebase } from '../env';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebase),
+    AngularFireModule.initializeApp(yourFirebaseConfig),
     AngularFireAuthModule, 
    ],
   bootstrap: [AppComponent]
