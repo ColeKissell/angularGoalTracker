@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '../auth.service'
+// import { AuthService } from '../auth.service'
 import {CalItem} from '../Calendar-Item'
 
 @Component({

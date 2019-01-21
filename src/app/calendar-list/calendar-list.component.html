@@ -6,13 +6,64 @@
   <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>
   <!-- <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button> -->
   
-  <div *ngFor="let item of auth.calendarItems">
-      <h3>{{ item.summary }} - {{ item.status }}</h3>
-      <p><em>Created {{ item.created }}</em></p>
-      <p>{{ item.description }}</p>
-      <hr/>
-      <!-- <app-calendar-detail></app-calendar-detail> -->
+  <div *ngIf="selected">
+      <app-calendar-detail [item]=selectedItem ></app-calendar-detail>
   </div>
+  
+ 
+  <div *ngFor="let item of auth.calendarItems" >
 
+    <div (click)="onSelect(item)">
+        <h3>Summmary: {{ item.summary }} - status: {{ item.status }}</h3>
+        <p>Start: {{item.start.date}}</p>
+    </div>
+      
+  </div>
+  <!-- <form>
+    <label>Summary:
+        <input [(ngModel)]="myItem.description" placeholder="description"/>
+    </label>
+      
+    <label>Description:
+        <input />
+    </label>
+      
+    <label>TimeZone:
+        <input />
+    </label>
+      
+    <label>Start:
+      <input type="datetime" />
+    </label>
+      
+    <label>End:
+        <input type="datetime" />
+    </label>
+      
+    <button type="submit" >Add</button>
+    </form> -->
+    <div onsubmit="onSubmit()">
+        <label>Summary:
+            <input #summary/>
+        </label>
+          
+        <label>Description:
+            <input #description/>
+        </label>
+          
+        <!-- <label>TimeZone:
+            <input #timeZone/>
+        </label> -->
+          
+        <label>Start:
+          <input type="datetime" #start.date />
+        </label>
+          
+        <label>End:
+            <input type="datetime" #end.date/>
+        </label>
+          
+        <button (onclick)="onSubmit()" >Add</button>
+    </div>
 </div>
 

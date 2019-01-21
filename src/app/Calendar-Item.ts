@@ -1,14 +1,13 @@
 export class CalItem {
+    created: string;
     calendarId: string;
     start: {
         dateTime: string;
-        timeZone: string;
     };
     end: {
         dateTime: string,
-        timeZone: string
     }; 
     summary: string;
     description: string;
-
+    statue: string;
 }
