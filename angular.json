@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "../138-google-calendar-firebase-auth/node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []

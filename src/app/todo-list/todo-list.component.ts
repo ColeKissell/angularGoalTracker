@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import gql from 'graphql-tag';
 import { Todo, Query } from "../types";
+import { query } from '@angular/core/src/render3/query';
 
 @Component({
   selector: 'app-todo-list',
@@ -27,7 +28,7 @@ export class TodoListComponent implements OnInit {
       }`
     }).valueChanges
     .pipe(
-      map(result => result.data.allTodos)
+      map(result => result.data.todos)
     );
   }
 

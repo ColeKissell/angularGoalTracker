@@ -1,10 +1,21 @@
 export type Todo = {
-    id: number;
-    body: string;
-    completed: boolean;
-    goalId: string;
+    id: String;
+    body: String;
+    completed: Boolean;
+    goalId: String;
+}
+export type Goal = {
+    id: String,
+    name: String,
+    description: String,
+    dueDate: String,
+    completed: Boolean,
+    todos:[Todo]
 }
 
 export type Query = {
-    allTodos: Todo[];
+    todos: Todo[];
+    todo: Todo;
+    goals: Goal[];
+    goal: Goal;
 }
