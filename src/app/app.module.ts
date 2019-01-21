@@ -14,6 +14,10 @@ import { GoalFormComponent } from './goal-form/goal-form.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ApolloModule, Apollo } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 // Add your project credentials
 // Then use it in the imports section below
@@ -26,8 +30,7 @@ const yourFirebaseConfig = {
   messagingSenderId: '289902267625'
 };
 
-// Delete Me!
-// import { environment.firebase } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,22 @@ const yourFirebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(yourFirebaseConfig),
     AngularFireAuthModule, 
+    HttpClientModule,
+    ApolloModule,
+    HttpLinkModule
    ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(
+    apollo: Apollo,
+    httpLink: HttpLink
+  ) {
+    apollo.create({
+      link: httpLink.create({ uri: 'http://localhost:4000/graphql'}),
+      cache: new InMemoryCache()
+    });
+  }
+
+}

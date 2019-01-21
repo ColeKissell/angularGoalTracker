@@ -5,7 +5,7 @@ import {CalItem} from '../Calendar-Item'
 @Component({
   selector: 'app-calendar-detail',
   templateUrl: './calendar-detail.component.html',
-  styleUrls: ['./calendar-detail.component.scss']
+  styleUrls: ['./calendar-detail.component.css']
 })
 export class CalendarDetailComponent implements OnInit {
   @Input() item: CalItem;
