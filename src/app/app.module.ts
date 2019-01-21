@@ -8,6 +8,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CalendarListComponent } from './calendar-list/calendar-list.component';
 import { CalendarDetailComponent } from './calendar-detail/calendar-detail.component';
 import { CalendarFormComponent } from './calendar-form/calendar-form.component';
+import { GoalListComponent } from './goal-list/goal-list.component';
+import { GoalDetailComponent } from './goal-detail/goal-detail.component';
+import { GoalFormComponent } from './goal-form/goal-form.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { TodoFormComponent } from './todo-form/todo-form.component';
 
 // Add your project credentials
 // Then use it in the imports section below
@@ -28,7 +34,13 @@ const yourFirebaseConfig = {
     AppComponent,
     CalendarListComponent,
     CalendarDetailComponent,
-    CalendarFormComponent
+    CalendarFormComponent,
+    GoalListComponent,
+    GoalDetailComponent,
+    GoalFormComponent,
+    TodoListComponent,
+    TodoDetailComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
