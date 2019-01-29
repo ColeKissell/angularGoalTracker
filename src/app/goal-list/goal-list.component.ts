@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
+import gql from 'graphql-tag';
+import { Goal, Query } from "../types";
 @Component({
   selector: 'app-goal-list',
   templateUrl: './goal-list.component.html',
@@ -7,9 +12,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoalListComponent implements OnInit {
 
-  constructor() { }
+  goals: Observable<Goal[]>;
+  
+
+  constructor(private apollo: Apollo) { }
 
   ngOnInit() {
+    this.goals = this.apollo.watchQuery<Query>({
+      query: gql`{
+        goals{
+          id
+          name
+          description
+          dueDate
+          completed
+          todos{
+            body
+          }
+        }
+      }`
+    }).valueChanges
+    .pipe(
+      map(result => result.data.goals)
+    );
   }
 
 }

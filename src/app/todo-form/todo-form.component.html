@@ -1,3 +1,30 @@
-<p>
-  todo-form works!
-</p>
+<div>
+
+    <form [formGroup]="todoForm">
+  
+        <label>
+            New Todo: 
+            <input type="text" [formControl]="todo"/>
+          </label>
+      
+      
+        <!-- <label>
+            Attach to Goal: 
+            <select [formControl]="goalId">
+                <option *ngFor="let goal of goals" [ngValue]="goal.id">
+                  {{goal.name}}
+                </option>
+              </select>
+          </label> -->
+        
+        <button type="submit">add</button>
+
+      </form>
+    
+        <div *ngFor="let mygoal of mygoals">
+          {{mygoal.name}}
+        </div>
+        
+
+</div>
+

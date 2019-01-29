@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
+import { ReactiveFormsModule } from '@angular/forms';
 // Add your project credentials
 // Then use it in the imports section below
 const yourFirebaseConfig = {
@@ -52,7 +52,8 @@ const yourFirebaseConfig = {
     AngularFireAuthModule, 
     HttpClientModule,
     ApolloModule,
-    HttpLinkModule
+    HttpLinkModule,
+    ReactiveFormsModule
    ],
   bootstrap: [AppComponent]
 })
