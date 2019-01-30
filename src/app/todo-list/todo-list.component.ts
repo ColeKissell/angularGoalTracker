@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
-
-import gql from 'graphql-tag';
-import { Todo, Query } from "../types";
-import { query } from '@angular/core/src/render3/query';
+import { Todo } from "../types";
+import {QueriesService} from '../queries.service'
 
 @Component({
   selector: 'app-todo-list',
@@ -17,25 +13,11 @@ export class TodoListComponent implements OnInit {
   selectedTodo: Todo;
   selected: boolean;
   todos: Observable<Todo[]>
-  constructor(private apollo: Apollo) { }
+  constructor(private que: QueriesService) { }
 
   ngOnInit() {
     this.selected = false;
-    this.todos = this.apollo.watchQuery<Query>({
-      query: gql`{
-        todos{
-          id
-          body
-          completed
-          goal{
-            name
-          }
-        }
-      }`
-    }).valueChanges
-    .pipe(
-      map(result => result.data.todos)
-    );
+    this.todos = this.que.getTodos();
   }
 
 

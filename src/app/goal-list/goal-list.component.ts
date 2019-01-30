@@ -5,6 +5,9 @@ import { map } from 'rxjs/operators';
 
 import gql from 'graphql-tag';
 import { Todo, Goal, Query } from "../types";
+import {QueriesService} from '../queries.service'
+
+
 @Component({
   selector: 'app-goal-list',
   templateUrl: './goal-list.component.html',
@@ -15,26 +18,13 @@ export class GoalListComponent implements OnInit {
   goals: Observable<Goal[]>;
   todos: Observable<Todo[]>;
 
-  constructor(private apollo: Apollo) { }
+  constructor(
+    private apollo: Apollo,
+    private que: QueriesService
+    ) { }
 
   ngOnInit() {
-    this.goals = this.apollo.watchQuery<Query>({
-      query: gql`{
-        goals{
-          id
-          name
-          description
-          dueDate
-          completed
-          todos{
-            body
-          }
-        }
-      }`
-    }).valueChanges
-    .pipe(
-      map(result => result.data.goals)
-    );
+    this.goals = this.que.getGoals();
   }
 
 

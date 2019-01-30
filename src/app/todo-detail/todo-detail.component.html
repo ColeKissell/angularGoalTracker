@@ -6,23 +6,35 @@
           <h5 class="card-title">{{todo.body}}</h5>
           <h6 class="card-subtitle">Id: {{todo.id}}</h6>
           <p class="card-text">Completed: {{todo.completed}}</p>
-          <p class="card-text">Goal: {{todo.goal.name}}</p>
+          <!-- <p class="card-text">Goal: {{todo.goal.name}}</p> -->
         </div>
       </div>
+      <button (click)="editing()">Edit</button>
       <br/>
-      <div *ngIf="todo">
+      <div *ngIf="edit">
           <label>Todo:
-            <!-- <input [(ngModel)]="todo.body"/> -->
+            <input 
+              id = "body"
+              [(ngModel)]="todo.body" name="body"
+              #body="ngModel"
+            />
           </label>
           <br/>
           <label>
             Completed: 
-            <!-- <input [(ngModel)]="todo.completed"/> -->
+            <input type="checkbox" [(ngModel)]="todo.completed"/>
           </label>
           <br/>
           <label>
             Goal: 
+            
+            <!-- <select>
+                <option *ngIf="expression" *ngFor="let goal of goals | async" value={{goal.id}}>
+                  {{goal.name}}
+                </option>
+              </select> -->
           </label>
+          <button type="submit">save</button>
         </div>
       <br/>
 </div>

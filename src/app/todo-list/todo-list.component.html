@@ -1,6 +1,8 @@
 <h3>
 Todo List
 </h3>
+
+
 <div class="container-fluid">
   <div class="row">
       <div class="col">
@@ -8,7 +10,6 @@ Todo List
               <div class="card" (click)="onSelect(todo)">
                 <div class="card-body">
                   <h5 class="card-title">{{todo.body}}</h5>
-                  <p class="card-text">Completed: {{todo.completed}}</p>
                 </div>
               </div>
           </div>
@@ -16,6 +17,7 @@ Todo List
         <div *ngIf="selected" class="col">
             <app-todo-detail [todo]=selectedTodo ></app-todo-detail>
         </div>
+        <app-todo-form></app-todo-form>
   </div>
 </div>
 

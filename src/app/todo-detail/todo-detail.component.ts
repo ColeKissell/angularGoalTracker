@@ -1,27 +1,35 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import { Goal, Todo} from "../types";
+import {QueriesService} from '../queries.service'
 
-import gql from 'graphql-tag';
-import { Todo, Query } from "../types";
 @Component({
   selector: 'app-todo-detail',
   templateUrl: './todo-detail.component.html',
   styleUrls: ['./todo-detail.component.css']
 })
 export class TodoDetailComponent implements OnInit {
-  @Input() todo: Todo;
-
-  constructor(private apollo: Apollo) { }
+  @Input() todo: Todo ;
+  goals: Observable<Goal[]>;
+  edit: Boolean;
+  // model: new Todo("","", null,"")
+  constructor(private que: QueriesService) { }
 
   ngOnInit() {
+    this.edit = false;
+    this.goals = this.que.getGoals();
+  }
 
+  editing() {
+    const truthy = !this.edit;
+    this.edit = truthy;
   }
 
 
-
-
+  SubmitTodo() {
+    event.preventDefault();
+    console.log(this.todo)
+  }
 
 
 }

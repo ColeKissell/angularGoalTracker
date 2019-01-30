@@ -18,4 +18,5 @@ export type Query = {
     todo: Todo;
     goals: Goal[];
     goal: Goal;
+    todoDetail(id: String): Todo;
 }

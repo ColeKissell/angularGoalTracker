@@ -1,19 +1,29 @@
-<div>
 
-    <form [formGroup]="todoForm" (ngSubmit)="SubmitTodo()">
-  
-        <label>
-            New Todo: 
-            <input type="text" [formControlName]="mytodo"/>
-          </label>
-        <label>
-            Attach to Goal: 
-            <select [formControlName]="goalId" >
-                <option *ngFor="let goal of goals | async" value={{goal.id}}>
-                  {{goal.name}}
-                </option>
-              </select>
-          </label>
+<div>
+<h4>New Todo</h4>
+    <form #todoForm="ngForm" (ngSubmit)="SubmitTodo()">
+        {{diagnostic}}
+        <div class="form-group">
+            <label for="body">Todo: </label>
+            <input type="text" class="form-control" id="body"
+                    required
+                    [(ngModel)]="model.body" name="body"
+                    #name="ngModel">
+          </div>
+
+          <div class="form-group">
+              <label for="completed">Completed: </label>
+              <input type="checkbox" class="form-control" id="completed"
+                      required
+                      [(ngModel)]="model.completed" name="completed"
+                      #name="ngModel">
+          </div>
+          <div class="form-group">
+            <label for='goalId'>Goal: </label>
+            <select [(ngModel)]="model.goalId"  name="goalId" id="goalId" required>
+              <option *ngFor="let item of goals | async" [value]="item.id">{{item.name}}</option>
+            </select>
+          </div>
         
         <button type="submit">add</button>
 
