@@ -1,7 +1,29 @@
-<div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{todo.body}}</h5>
-      <h6 class="card-subtitle">Id: {{todo.id}}</h6>
-      <p class="card-text">Completed: {{todo.completed}}</p>
-    </div>
-  </div>
+<div *ngIf="todo">
+<h3>Selected Todo</h3>
+<br/>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{todo.body}}</h5>
+          <h6 class="card-subtitle">Id: {{todo.id}}</h6>
+          <p class="card-text">Completed: {{todo.completed}}</p>
+          <p class="card-text">Goal: {{todo.goal.name}}</p>
+        </div>
+      </div>
+      <br/>
+      <div *ngIf="todo">
+          <label>Todo:
+            <!-- <input [(ngModel)]="todo.body"/> -->
+          </label>
+          <br/>
+          <label>
+            Completed: 
+            <!-- <input [(ngModel)]="todo.completed"/> -->
+          </label>
+          <br/>
+          <label>
+            Goal: 
+          </label>
+        </div>
+      <br/>
+</div>
+

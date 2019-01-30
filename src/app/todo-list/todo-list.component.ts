@@ -14,16 +14,22 @@ import { query } from '@angular/core/src/render3/query';
 })
 export class TodoListComponent implements OnInit {
 
+  selectedTodo: Todo;
+  selected: boolean;
   todos: Observable<Todo[]>
   constructor(private apollo: Apollo) { }
 
   ngOnInit() {
+    this.selected = false;
     this.todos = this.apollo.watchQuery<Query>({
       query: gql`{
         todos{
           id
           body
           completed
+          goal{
+            name
+          }
         }
       }`
     }).valueChanges
@@ -31,5 +37,14 @@ export class TodoListComponent implements OnInit {
       map(result => result.data.todos)
     );
   }
+
+
+  onSelect(todo: Todo): void {
+    this.selectedTodo = todo;
+    const truthy = !this.selected;
+    this.selected = truthy;
+  }
+
+
 
 }

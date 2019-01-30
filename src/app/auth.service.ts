@@ -22,7 +22,6 @@ export class AuthService {
   // Initialize the Google API client with desired scopes
   initClient() {
     gapi.load('client', () => {
-      console.log('loaded client')
 
       // It's OK to expose these credentials, they are client safe.
       gapi.client.init({

@@ -3,7 +3,7 @@ import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
-import { Goal, Query } from "../types";
+import { Goal, Todo, Query } from "../types";
 import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-todo-form',
@@ -11,17 +11,19 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./todo-form.component.css']
 })
 export class TodoFormComponent implements OnInit {
-  mygoals: Observable<Goal[]>;
+  goals: Observable<Goal[]>;
+
 
   todoForm = new FormGroup({
-    todo: new FormControl(''),
-    goalId: new FormControl('')
+    mytodo: new FormControl(),
+    completed: new FormControl(false),
+    goalId: new FormControl()
   })
 
   constructor(private apollo: Apollo) { }
 
   ngOnInit() {
-    this.mygoals = this.apollo.watchQuery<Query>({
+    this.goals = this.apollo.watchQuery<Query>({
       query: gql`{
         goals{
           id
@@ -34,4 +36,8 @@ export class TodoFormComponent implements OnInit {
     );
   }
 
+  SubmitTodo() {
+    event.preventDefault();
+    console.log(this.todoForm)
+  }
 }

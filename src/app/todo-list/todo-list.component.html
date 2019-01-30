@@ -1,14 +1,22 @@
 <h3>
 Todo List
 </h3>
-<app-todo-form></app-todo-form>
-<div *ngFor="let todo of todos | async">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{todo.body}}</h5>
-        <h6 class="card-subtitle">Id: {{todo.id}}</h6>
-        <p class="card-text">Completed: {{todo.completed}}</p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col">
+          <div *ngFor="let todo of todos | async">
+              <div class="card" (click)="onSelect(todo)">
+                <div class="card-body">
+                  <h5 class="card-title">{{todo.body}}</h5>
+                  <p class="card-text">Completed: {{todo.completed}}</p>
+                </div>
+              </div>
+          </div>
       </div>
-    </div>
-    <!-- <app-todo-detail></app-todo-detail> -->
+        <div *ngIf="selected" class="col">
+            <app-todo-detail [todo]=selectedTodo ></app-todo-detail>
+        </div>
   </div>
+</div>
+
+

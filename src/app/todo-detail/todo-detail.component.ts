@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
@@ -11,10 +11,17 @@ import { Todo, Query } from "../types";
   styleUrls: ['./todo-detail.component.css']
 })
 export class TodoDetailComponent implements OnInit {
+  @Input() todo: Todo;
 
-  constructor() { }
+  constructor(private apollo: Apollo) { }
 
   ngOnInit() {
+
   }
+
+
+
+
+
 
 }

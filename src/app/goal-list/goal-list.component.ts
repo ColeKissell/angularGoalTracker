@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
 import gql from 'graphql-tag';
-import { Goal, Query } from "../types";
+import { Todo, Goal, Query } from "../types";
 @Component({
   selector: 'app-goal-list',
   templateUrl: './goal-list.component.html',
@@ -13,7 +13,7 @@ import { Goal, Query } from "../types";
 export class GoalListComponent implements OnInit {
 
   goals: Observable<Goal[]>;
-  
+  todos: Observable<Todo[]>;
 
   constructor(private apollo: Apollo) { }
 
@@ -36,5 +36,6 @@ export class GoalListComponent implements OnInit {
       map(result => result.data.goals)
     );
   }
+
 
 }
