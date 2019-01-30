@@ -27,7 +27,6 @@ export class TodoDetailComponent implements OnInit {
 
 
   SubmitTodo() {
-    event.preventDefault();
     console.log(this.todo)
   }
 

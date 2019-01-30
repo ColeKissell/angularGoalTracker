@@ -11,31 +11,33 @@
       </div>
       <button (click)="editing()">Edit</button>
       <br/>
-      <div *ngIf="edit">
-          <label>Todo:
-            <input 
-              id = "body"
-              [(ngModel)]="todo.body" name="body"
-              #body="ngModel"
-            />
-          </label>
-          <br/>
-          <label>
-            Completed: 
-            <input type="checkbox" [(ngModel)]="todo.completed"/>
-          </label>
-          <br/>
-          <label>
-            Goal: 
-            
-            <!-- <select>
-                <option *ngIf="expression" *ngFor="let goal of goals | async" value={{goal.id}}>
-                  {{goal.name}}
-                </option>
-              </select> -->
-          </label>
+      <form *ngIf="edit" #todoForm="ngForm" (ngSubmit)="SubmitTodo()">
+          {{diagnostic}}
+          <div class="form-group">
+              <label for="body">Todo: </label>
+              <input type="text" class="form-control" id="body"
+                      required
+                      [(ngModel)]="todo.body" name="body"
+                      #name="ngModel">
+            </div>
+  
+            <div class="form-group">
+                <label for="completed">Completed: </label>
+                <input type="checkbox" class="form-control" id="completed"
+                        required
+                        [(ngModel)]="todo.completed" name="completed"
+                        #name="ngModel">
+            </div>
+            <div class="form-group">
+              <label for='goalId'>Goal: </label>
+              <select [(ngModel)]="todo.goalId"  name="goalId" id="goalId" required>
+                <option *ngFor="let item of goals | async" [value]="item.id">{{item.name}}</option>
+              </select>
+            </div>
+          
           <button type="submit">save</button>
-        </div>
+  
+        </form> 
       <br/>
 </div>
 

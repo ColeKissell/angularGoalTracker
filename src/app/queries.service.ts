@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 import { Goal, Todo, Query } from "./types";
-import { variable } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
