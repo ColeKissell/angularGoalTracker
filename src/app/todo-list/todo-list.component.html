@@ -15,9 +15,9 @@ To Do List
           </div>
       </div>
         <div *ngIf="selected" class="col">
-            <app-todo-detail [todo]=selectedTodo ></app-todo-detail>
+            <app-todo-detail [todo]=selectedTodo (changed)="onUpdate($event)"></app-todo-detail>
         </div>
-        <app-todo-form></app-todo-form>
+        <app-todo-form (changed)="onUpdate($event)"></app-todo-form>
   </div>
 </div>
 

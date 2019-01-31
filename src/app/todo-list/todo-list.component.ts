@@ -27,6 +27,10 @@ export class TodoListComponent implements OnInit {
     this.selected = truthy;
   }
 
+  
+  onUpdate(changed: boolean){
+    location.reload();
+  }
 
 
 }

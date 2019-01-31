@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Goal, Todo} from "../types";
 import {QueriesService} from '../queries.service'
 import {MutationsService} from '../mutations.service'
+
+
+
 @Component({
   selector: 'app-goal-detail',
   templateUrl: './goal-detail.component.html',
@@ -10,7 +12,8 @@ import {MutationsService} from '../mutations.service'
 })
 export class GoalDetailComponent implements OnInit {
 @Input() goal:Goal;
-edit: Boolean;
+@Output() changed: EventEmitter<boolean> = new EventEmitter();
+  edit: Boolean;
 
 constructor(
   private que: QueriesService,
@@ -27,14 +30,18 @@ constructor(
   }
 
   SubmitGoal() {
-    this.mut.updateGoal(this.goal)
+    this.mut.updateGoal(this.goal);
+    this.edit=false;
   }
 
-  removeTodo(){
+  removeGoal(){
     this.mut.deleteGoal(this.goal)
-    
+    this.changedState();
   }
 
+  changedState(): void {
+    this.changed.emit(true);
+  }
 
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Goal, Todo, Query } from "../types";
 import {MyTodo} from "./mytodo";
@@ -10,11 +10,14 @@ import {MutationsService} from '../mutations.service';
   styleUrls: ['./todo-form.component.css']
 })
 export class TodoFormComponent implements OnInit {
+  @Output() changed: EventEmitter<boolean> = new EventEmitter();
+
+
+
   goals: Observable<Goal[]>;
 
   model = new MyTodo("",false,"");
 
-  submitted = false;
 
 
   constructor(
@@ -28,7 +31,10 @@ export class TodoFormComponent implements OnInit {
 
   SubmitTodo(){
     this.mut.addTodo(this.model);
-    this.submitted=true;
+    this.changedState();
   }
 
+  changedState(): void {
+    this.changed.emit(true);
+  }
 }

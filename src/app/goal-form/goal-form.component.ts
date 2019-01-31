@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {QueriesService} from '../queries.service';
 import {MutationsService} from '../mutations.service';
 import { Goal, Todo, Query } from "../types";
@@ -11,8 +11,8 @@ import { MyGoal } from "./myGoal";
   styleUrls: ['./goal-form.component.css']
 })
 export class GoalFormComponent implements OnInit {
+  @Output() changed: EventEmitter<boolean> = new EventEmitter();
 
-  submitted = false;
 
   model = new MyGoal("","","",false)
 
@@ -26,6 +26,10 @@ export class GoalFormComponent implements OnInit {
   }
   SubmitGoal(){
     this.mut.addGoal(this.model);
-    this.submitted=true;
+    this.changedState();
+  }
+
+  changedState(): void {
+    this.changed.emit(true);
   }
 }

@@ -18,7 +18,11 @@
               <input type="text" class="form-control" id="body"
                       required
                       [(ngModel)]="todo.body" name="body"
-                      #name="ngModel">
+                      #body="ngModel">
+            </div>
+            <div [hidden]="body.valid || body.pristine"
+            class="alert alert-danger">
+                To do is required
             </div>
   
             <div class="form-group">
@@ -26,16 +30,16 @@
                 <input type="checkbox" class="form-control" id="completed"
                         required
                         [(ngModel)]="todo.completed" name="completed"
-                        #name="ngModel">
+                        #completed="ngModel">
             </div>
             <div class="form-group">
               <label for='goalId'>Goal: </label>
-              <select [(ngModel)]="todo.goalId"  name="goalId" id="goalId" required>
+              <select [(ngModel)]="todo.goalId"  name="goalId" id="goalId" required #goalId="ngModel">
                 <option *ngFor="let item of goals | async" [value]="item.id">{{item.name}}</option>
               </select>
             </div>
           
-          <button type="submit" (click)="SubmitTodo()">save</button>
+          <button type="submit" [disabled]="!todoForm.valid">save</button>
   
         </form> 
       <br/>

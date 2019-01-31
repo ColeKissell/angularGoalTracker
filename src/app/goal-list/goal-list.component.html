@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col">
             <div *ngFor="let goal of goals | async">
-                <div class="card" (click)="onSelect(goal)">
+                <div class="card" (click)="onSelect(goal)" >
                   <div class="card-body">
                     <h5 class="card-title">{{goal.name}}</h5>
                     <h6 class="card-subtitle">Id: {{goal.id}}</h6>
@@ -16,9 +16,9 @@
               </div>
         </div>
           <div *ngIf="selected" class="col">
-              <app-goal-detail [goal]=selectedGoal ></app-goal-detail>
+              <app-goal-detail [goal]=selectedGoal (changed)="onUpdate($event)"></app-goal-detail>
           </div>
-          <app-goal-form></app-goal-form>
+          <app-goal-form (changed)="onUpdate($event)"></app-goal-form>
     </div>
   </div>
 

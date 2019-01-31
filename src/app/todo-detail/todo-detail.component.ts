@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Goal, Todo} from "../types";
 import {QueriesService} from '../queries.service'
@@ -12,7 +12,10 @@ import {MutationsService} from '../mutations.service'
   styleUrls: ['./todo-detail.component.css']
 })
 export class TodoDetailComponent implements OnInit {
+  @Output() changed: EventEmitter<boolean> = new EventEmitter();
   @Input() todo: Todo ;
+
+
   goals: Observable<Goal[]>;
   edit: Boolean;
 
@@ -33,12 +36,15 @@ export class TodoDetailComponent implements OnInit {
 
 
   SubmitTodo() {
-    this.mut.updateTodo(this.todo)
+    this.mut.updateTodo(this.todo);
+    this.edit=false;
   }
 
   removeTodo(){
     this.mut.deleteTodo(this.todo)
-    
+    this.changedState();
   }
-
+  changedState(): void {
+    this.changed.emit(true);
+  }
 }

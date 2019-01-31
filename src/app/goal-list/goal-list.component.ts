@@ -34,4 +34,8 @@ export class GoalListComponent implements OnInit {
     const truthy = !this.selected;
     this.selected = truthy;
   }
+
+  onUpdate(changed: boolean){
+    location.reload();
+  }
 }

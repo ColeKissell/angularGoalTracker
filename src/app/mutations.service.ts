@@ -31,6 +31,7 @@ export class MutationsService {
           goalId: values.goalId
         }})
       .subscribe(({ response }) => {
+        
       }, (error) => {
         console.log('there was an error sending the query', error);
       });
