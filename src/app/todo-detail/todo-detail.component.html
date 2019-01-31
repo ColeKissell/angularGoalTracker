@@ -34,7 +34,8 @@
             </div>
             <div class="form-group">
               <label for='goalId'>Goal: </label>
-              <select [(ngModel)]="todo.goalId"  name="goalId" id="goalId" required #goalId="ngModel">
+              <select [(ngModel)]="todo.goalId"  name="goalId" id="goalId" required #goalId="ngModel" >
+                <option  selected [value]="todo.goalId" >{{todo.goal.name}}</option>
                 <option *ngFor="let item of goals | async" [value]="item.id">{{item.name}}</option>
               </select>
             </div>

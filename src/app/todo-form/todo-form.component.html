@@ -23,7 +23,7 @@
         <div class="form-group">
             <label for='goalId'>Goal: </label>
             <select [(ngModel)]="model.goalId"  name="goalId" id="goalId" required #goal="ngModel">
-              <option *ngFor="let item of goals | async" [value]="item.id">{{item.name}}</option>
+                <option *ngFor="let item of goals | async" [value]="item.id">{{item.name}}</option>
             </select>
         </div>
         <div [hidden]="goal.valid || goal.pristine"

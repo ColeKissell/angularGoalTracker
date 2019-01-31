@@ -31,7 +31,7 @@ export class AuthService {
         scope: 'https://www.googleapis.com/auth/calendar'
       })
 
-      gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
+      gapi.client.load('calendar', 'v3', () => null);
 
     });
 
@@ -40,24 +40,23 @@ export class AuthService {
   }
 
   async login() {
-    const googleAuth = gapi.auth2.getAuthInstance()
-    const googleUser = await googleAuth.signIn();
+    // const googleAuth = gapi.auth2.getAuthInstance()
+    // const googleUser = await googleAuth.signIn();
 
-    const token = googleUser.getAuthResponse().id_token;
+    // const token = googleUser.getAuthResponse().id_token;
 
-    console.log(googleUser)
+    // console.log(googleUser)
 
-    const credential = auth.GoogleAuthProvider.credential(token);
+    // const credential = auth.GoogleAuthProvider.credential(token);
 
-    await this.afAuth.auth.signInAndRetrieveDataWithCredential(credential);
+    // await this.afAuth.auth.signInAndRetrieveDataWithCredential(credential);
 
 
     // Alternative approach, use the Firebase login with scopes and make RESTful API calls
+    const provider = new auth.GoogleAuthProvider()
+    provider.addScope('https://www.googleapis.com/auth/calendar');
 
-    // const provider = new auth.GoogleAuthProvider()
-    // provider.addScope('https://www.googleapis.com/auth/calendar');
-
-    // this.afAuth.auth.signInWithPopup(provider)
+    this.afAuth.auth.signInWithPopup(provider)
     
   }
   logout() {
@@ -70,7 +69,7 @@ export class AuthService {
       timeMin: new Date().toISOString(),
       showDeleted: false,
       singleEvents: true,
-      maxResults: 10,
+      maxResults: 3,
       orderBy: 'startTime'
     })
 

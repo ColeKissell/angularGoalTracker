@@ -1,69 +1,37 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div *ngFor="let item of auth.calendarItems " >
+                    <div class="col"  (click)="onSelect(item)">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{item.summary}}</h5>
+                                <p>Start: {{item.start.dateTime}}</p>
+                            </div>
+                        </div>
+                    
+        </div>
+  
 
-<hr/>
-<hr/>
 
+
+
+                <!-- <h3>Summmary: {{ item.summary }} - status: {{ item.status }}</h3> -->
+                
+            </div>
+        </div>
+        <div *ngIf="selected" class="col">
+            <app-calendar-detail [item]=selectedItem ></app-calendar-detail>
+        </div>
+    </div>
+</div>
 <div *ngIf="auth.user$ | async">
   <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>
   <!-- <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button> -->
   
-  <div *ngIf="selected">
-      <app-calendar-detail [item]=selectedItem ></app-calendar-detail>
-  </div>
+
   
  
-  <div *ngFor="let item of auth.calendarItems" >
 
-    <div (click)="onSelect(item)">
-        <h3>Summmary: {{ item.summary }} - status: {{ item.status }}</h3>
-        <p>Start: {{item.start.date}}</p>
-    </div>
-      
-  </div>
-  <!-- <form>
-    <label>Summary:
-        <input [(ngModel)]="myItem.description" placeholder="description"/>
-    </label>
-      
-    <label>Description:
-        <input />
-    </label>
-      
-    <label>TimeZone:
-        <input />
-    </label>
-      
-    <label>Start:
-      <input type="datetime" />
-    </label>
-      
-    <label>End:
-        <input type="datetime" />
-    </label>
-      
-    <button type="submit" >Add</button>
-    </form> -->
-    <div onsubmit="onSubmit()">
-        <label>Summary:
-            <input #summary/>
-        </label>
-          
-        <label>Description:
-            <input #description/>
-        </label>
-          
-        <!-- <label>TimeZone:
-            <input #timeZone/>
-        </label> -->
-          
-        <label>Start:
-          <input type="datetime" #start.date />
-        </label>
-          
-        <label>End:
-            <input type="datetime" #end.date/>
-        </label>
-          
-        <button (onclick)="onSubmit()" >Add</button>
-    </div>
 </div>
 
