@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Goal, Todo} from "../types";
 import {QueriesService} from '../queries.service'
+import {MutationsService} from '../mutations.service'
+
+
 
 @Component({
   selector: 'app-todo-detail',
@@ -12,8 +15,11 @@ export class TodoDetailComponent implements OnInit {
   @Input() todo: Todo ;
   goals: Observable<Goal[]>;
   edit: Boolean;
-  // model: new Todo("","", null,"")
-  constructor(private que: QueriesService) { }
+
+  constructor(
+    private que: QueriesService,
+    private mut: MutationsService
+    ) { }
 
   ngOnInit() {
     this.edit = false;
@@ -27,8 +33,12 @@ export class TodoDetailComponent implements OnInit {
 
 
   SubmitTodo() {
-    console.log(this.todo)
+    this.mut.updateTodo(this.todo)
   }
 
+  removeTodo(){
+    this.mut.deleteTodo(this.todo)
+    
+  }
 
 }

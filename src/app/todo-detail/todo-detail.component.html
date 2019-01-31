@@ -1,20 +1,20 @@
 <div *ngIf="todo">
-<h3>Selected Todo</h3>
+<h3>Selected To Do</h3>
 <br/>
     <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{todo.body}}</h5>
           <h6 class="card-subtitle">Id: {{todo.id}}</h6>
           <p class="card-text">Completed: {{todo.completed}}</p>
-          <!-- <p class="card-text">Goal: {{todo.goal.name}}</p> -->
+          <p class="card-text">Goal: {{todo.goal.name}}</p>
         </div>
       </div>
       <button (click)="editing()">Edit</button>
+      <button (click)="removeTodo()">Delete</button>
       <br/>
       <form *ngIf="edit" #todoForm="ngForm" (ngSubmit)="SubmitTodo()">
-          {{diagnostic}}
           <div class="form-group">
-              <label for="body">Todo: </label>
+              <label for="body">To do: </label>
               <input type="text" class="form-control" id="body"
                       required
                       [(ngModel)]="todo.body" name="body"
@@ -35,7 +35,7 @@
               </select>
             </div>
           
-          <button type="submit">save</button>
+          <button type="submit" (click)="SubmitTodo()">save</button>
   
         </form> 
       <br/>

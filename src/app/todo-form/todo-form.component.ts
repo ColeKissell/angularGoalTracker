@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Goal, Todo, Query } from "../types";
-import {MyTodo} from "./mytodo"
-import {QueriesService} from '../queries.service'
-import {MutationsService} from '../mutations.service'
+import {MyTodo} from "./mytodo";
+import {QueriesService} from '../queries.service';
+import {MutationsService} from '../mutations.service';
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',

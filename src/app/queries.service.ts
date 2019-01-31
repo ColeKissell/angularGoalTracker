@@ -19,6 +19,13 @@ export class QueriesService {
       goals{
         id
         name
+        description
+        dueDate
+        completed
+        todos{
+          body
+          id
+        }
       }
     }`
     }).valueChanges
@@ -28,9 +35,6 @@ export class QueriesService {
     return goals
   }
 
-  //get all detials of Goal and body/id of todos attached to goal 
-
-  // get body and id of todo
   getTodos() {
     const todos = this.apollo.watchQuery<Query>({
     query: gql`{

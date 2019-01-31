@@ -17,6 +17,8 @@ export class GoalListComponent implements OnInit {
 
   goals: Observable<Goal[]>;
   todos: Observable<Todo[]>;
+  selectedGoal: Goal;
+  selected: boolean;
 
   constructor(
     private apollo: Apollo,
@@ -27,5 +29,9 @@ export class GoalListComponent implements OnInit {
     this.goals = this.que.getGoals();
   }
 
-
+  onSelect(goal: Goal): void {
+    this.selectedGoal = goal;
+    const truthy = !this.selected;
+    this.selected = truthy;
+  }
 }
