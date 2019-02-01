@@ -1,13 +1,59 @@
-<p>
-  calendar-form works!
-</p>
+<div>
 
-<!-- <form>
-  <label>TimeZone</label>
-  <input #timeZone/>
-  <label>Start</label>
-  <input type="datetime" #start/>
-  <label>end</label>
-  <input type="datetime" #end/>
-  <button type="submit" >Add</button>
-</form> -->
+    <form #calForm="ngForm" (ngSubmit)="SubmitCalItem()">
+
+        <div class="form-group">
+            <label for="summary">Summary: </label>
+            <input type="text" class="form-control" id="summary"
+                    
+                    [(ngModel)]="model.summary" name="summary"
+                    #summary="ngModel">
+        </div>
+        <div [hidden]="summary.valid || summary.pristine"
+        class="alert alert-danger">
+          Summary is required
+        </div>
+
+
+        <div class="form-group">
+            <label for="description">Description: </label>
+            <input type="text" class="form-control" id="description"
+                    [(ngModel)]="model.description" name="description"
+                    #summary="ngModel">
+        </div>
+
+        <div class="form-group">
+            <label for="start">Start: </label>
+            <input type="datetime" class="form-control" id="start"
+                    [(ngModel)]="model.start" name="start"
+                    required
+                    #start="ngModel">
+        </div>
+        <div [hidden]="start.valid || start.pristine"
+        class="alert alert-danger">
+            Start time is required
+        </div>
+ 
+
+        <div class="form-group">
+            <label for="end">End: </label>
+            <input type="datetime" class="form-control" id="end"
+                    [(ngModel)]="model.end" name="end"
+                    required
+                    #end="ngModel">
+        </div>
+        <div [hidden]="end.valid || end.pristine"
+        class="alert alert-danger">
+            End time is required
+        </div>
+
+
+        <button type="submit" [disabled]="!calForm.valid">add to calendar</button>
+
+    </form>
+
+</div>
+
+
+
+

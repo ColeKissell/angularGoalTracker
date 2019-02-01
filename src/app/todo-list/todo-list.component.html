@@ -7,7 +7,7 @@ To Do List
   <div class="row">
       <div class="col">
           <div *ngFor="let todo of todos | async">
-              <div class="card" (click)="onSelect(todo)">
+              <div class="card mb-3" (click)="onSelect(todo)">
                 <div class="card-body">
                   <h5 class="card-title">{{todo.body}}</h5>
                 </div>
@@ -17,7 +17,7 @@ To Do List
         <div *ngIf="selected" class="col">
             <app-todo-detail [todo]=selectedTodo (changed)="onUpdate($event)"></app-todo-detail>
         </div>
-        <app-todo-form (changed)="onUpdate($event)"></app-todo-form>
+        <app-todo-form class="col" (changed)="onUpdate($event)"></app-todo-form>
   </div>
 </div>
 

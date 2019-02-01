@@ -19,6 +19,7 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 // Add your project credentials
@@ -56,7 +57,8 @@ const yourFirebaseConfig = {
     ApolloModule,
     HttpLinkModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
    ],
   bootstrap: [AppComponent]
 })

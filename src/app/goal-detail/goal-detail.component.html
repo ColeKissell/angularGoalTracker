@@ -9,10 +9,13 @@
       <p class="card-text" *ngFor="let item of goal.todos">
         <li>{{item.body}}</li>
       </p>
+      
+          <button type="button" class="btn btn-secondary" (click)="editing()">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="removeGoal()">Delete</button>
+      
     </div>
   </div>
-  <button (click)="editing()">Edit</button>
-  <button (click)="removeGoal()">Delete</button>
+
   <br/>
   <form *ngIf="edit" #goalForm="ngForm" (ngSubmit)="SubmitGoal()">
       <div class="form-group">

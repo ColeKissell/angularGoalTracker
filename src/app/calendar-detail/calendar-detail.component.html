@@ -1,9 +1,12 @@
-<p>
-  calendar-detail works!
-</p>
-<h3>Summmary: {{ item.summary }} - status: {{ item.status }}</h3>
-<p><em>Created: {{ item.created }}</em></p>
-<p>Description: {{ item.description }}</p>
-<p>End: {{item.end.dateTime}}</p>
-<p>Start: {{item.start.dateTime}}</p>
-<hr/>
+
+<div class="card">
+      
+    <div class="card-body">
+        <h3 class="card-header-title">{{ item.summary }}</h3>
+        <p class="card-text">{{item.description}}</p>
+        <p class="card-text">Created: {{ item.created | date:'short' }}</p>
+        <p class="card-text">Start: {{item.start.dateTime | date:'short'}}</p>
+        <p class="card-text">End: {{item.end.dateTime | date:'short'}}</p>
+    </div>
+
+</div>

@@ -1,23 +1,24 @@
 <main>
-    <h3>Google Calendar + Firebase + Apollo + GraphQL</h3>
+    <!-- <h3>Google Calendar + Firebase + Apollo + GraphQL</h3>
     <p>Welcome to Goal Manager App </p>
 
-    <hr/>
+    <hr/> -->
     <div *ngIf="auth.user$ | async as user">
         <h3>Logged in as {{ user.displayName }}</h3>
         <img src="{{ user.photoURL }}" width="50px">
     </div>
 
 
-    <button (click)="auth.login()" class="button is-danger">Login with Google</button>
 
-    <button (click)="auth.logout()" class="button">Logout</button>
 
 
 </main>
 <nav class="navbar navbar-dark bg-primary">
     <a class="navbar-brand" routerLink='/calendar'>Calendar</a>
     <a class="navbar-brand" routerLink='/goals'>Goals</a>
-    <a class="navbar-brand" routerLink='/todos'>Todos</a>
+    <a class="navbar-brand" routerLink='/todos'>To Dos</a>
+    <button type="button" (click)="auth.login()" class="button">Login with Google</button>
+
+    <button (click)="auth.logout()" class="button">Logout</button>
 </nav>
 <router-outlet></router-outlet>

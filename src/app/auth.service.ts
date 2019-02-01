@@ -84,11 +84,11 @@ export class AuthService {
       calendarId: 'primary',
       start: {
         dateTime: hoursFromNow(2),
-        timeZone: 'America/Los_Angeles'
+        timeZone: 'America/Denver'
       }, 
       end: {
         dateTime: hoursFromNow(3),
-        timeZone: 'America/Los_Angeles'
+        timeZone: 'America/Denver'
       }, 
       summary: 'Have Fun!!!',
       description: 'Do some cool stuff and have a fun time doing it'
