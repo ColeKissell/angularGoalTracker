@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalItem } from '../Calendar-Item';
 import {AuthService} from '../auth.service'
 import { getLocaleDateTimeFormat, formatDate } from '@angular/common';
-
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 
 @Component({
@@ -15,7 +15,11 @@ export class CalendarFormComponent implements OnInit {
 
   model = {start: "", end: new Date(), description: "", summary: ""}
 
+  events: string[] = [];
 
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.events.push(`${type}: ${event.value}`);
+  }
 
   constructor(private auth: AuthService) { }
 
@@ -25,16 +29,8 @@ export class CalendarFormComponent implements OnInit {
 
   SubmitCalItem(){
     console.log(this.model)
-    this.format();
+
   }
 
-  format(){
-    let time = this.model.start
-   const newTime = formatDate(time,"short", "America/Denver" )
-    console.log(newTime) 
-  }
-
-  hoursFromNow = (n) => 
-  new Date(Date.now() + n * 1000 * 60 * 60 ).toISOString();
 
 }
