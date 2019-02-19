@@ -10,4 +10,5 @@ export class CalItem {
     summary: string;
     description: string;
     statue: string;
+    id: string;
 }

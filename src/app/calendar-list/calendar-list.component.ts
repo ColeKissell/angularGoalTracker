@@ -22,7 +22,6 @@ export class CalendarListComponent implements OnInit {
     const truthy = !this.selected;
     this.selected = truthy;
   }
-  // retrieve specific Item ?
 
   // save edit or submit new
   onSubmit(myItem): void {

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Goal, Todo} from "../types";
 import {QueriesService} from '../queries.service'
 import {MutationsService} from '../mutations.service'
-
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class GoalDetailComponent implements OnInit {
 @Input() goal:Goal;
 @Output() changed: EventEmitter<boolean> = new EventEmitter();
   edit: Boolean;
-
+  model: {date: string}
 constructor(
   private que: QueriesService,
   private mut: MutationsService
@@ -43,6 +43,9 @@ constructor(
     this.changed.emit(true);
   }
 
-
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>){
+    const date = event.value.toString();
+    this.model.date = date
+  }
 
 }

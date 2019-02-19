@@ -3,7 +3,7 @@ import {QueriesService} from '../queries.service';
 import {MutationsService} from '../mutations.service';
 import { Goal, Todo, Query } from "../types";
 import { MyGoal } from "./myGoal";
-
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-goal-form',
@@ -28,7 +28,10 @@ export class GoalFormComponent implements OnInit {
     this.mut.addGoal(this.model);
     this.changedState();
   }
-
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>){
+    const date = event.value.toString();
+    this.model.dueDate = date
+  }
   changedState(): void {
     this.changed.emit(true);
   }

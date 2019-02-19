@@ -9,9 +9,10 @@
           <p class="card-text">Goal: {{todo.goal.name}}</p>
         </div>
       </div>
-      <button (click)="editing()">Edit</button>
-      <button (click)="removeTodo()">Delete</button>
+      <button type="button" class="btn btn-secondary" (click)="editing()">Edit</button>
+      <button type="button" class="btn btn-danger" (click)="removeTodo()">Delete</button>
       <br/>
+      
       <form *ngIf="edit" #todoForm="ngForm" (ngSubmit)="SubmitTodo()">
           <div class="form-group">
               <label for="body">To do: </label>
@@ -26,21 +27,21 @@
             </div>
   
             <div class="form-group">
-                <label for="completed">Completed: </label>
-                <input type="checkbox" class="form-control" id="completed"
-                        required
-                        [(ngModel)]="todo.completed" name="completed"
-                        #completed="ngModel">
+              <div class="form-group">
+                  <mat-checkbox  id="completed"
+                    [(ngModel)]="todo.completed" name="completed"
+                    #completed="ngModel">Completed?</mat-checkbox>
+                </div>
             </div>
             <div class="form-group">
               <label for='goalId'>Goal: </label>
               <select [(ngModel)]="todo.goalId"  name="goalId" id="goalId" required #goalId="ngModel" >
-                <option  selected [value]="todo.goalId" >{{todo.goal.name}}</option>
+                <option  [value]="todo.goal.id" selected>current goal: {{todo.goal.name}}</option>
                 <option *ngFor="let item of goals | async" [value]="item.id">{{item.name}}</option>
               </select>
             </div>
           
-          <button type="submit" [disabled]="!todoForm.valid">save</button>
+          <button type="submit" class="btn btn-secondary" [disabled]="!todoForm.valid">save</button>
   
         </form> 
       <br/>

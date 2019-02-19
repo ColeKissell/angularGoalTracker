@@ -13,6 +13,10 @@ export class TodoListComponent implements OnInit {
   selectedTodo: Todo;
   selected: boolean;
   todos: Observable<Todo[]>
+
+
+
+
   constructor(private que: QueriesService) { }
 
   ngOnInit() {

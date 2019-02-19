@@ -24,6 +24,7 @@ export class QueriesService {
         completed
         todos{
           body
+          completed
           id
         }
       }

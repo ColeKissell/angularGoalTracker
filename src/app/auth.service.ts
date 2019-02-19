@@ -13,7 +13,6 @@ export class AuthService {
   
   user$: Observable<firebase.User>; 
   calendarItems: any[];
-
   constructor(public afAuth: AngularFireAuth) { 
     this.initClient();
     this.user$ = afAuth.authState;
@@ -75,29 +74,56 @@ export class AuthService {
 
     console.log(events)
 
+
     this.calendarItems = events.result.items;
   
   }
 
-  async insertEvent() {
+  async insertEvent(startD, endD, summary, description) {
     const insert = await gapi.client.calendar.events.insert({
       calendarId: 'primary',
       start: {
-        dateTime: hoursFromNow(2),
-        timeZone: 'America/Denver'
+        dateTime: startD,
       }, 
       end: {
-        dateTime: hoursFromNow(3),
-        timeZone: 'America/Denver'
+        dateTime: endD,
       }, 
-      summary: 'Have Fun!!!',
-      description: 'Do some cool stuff and have a fun time doing it'
+      summary: summary,
+      description: description
     })
 
     await this.getCalendar();
   }
 
+  async deleteEvent(EventId){
+    const deleteE = await gapi.client.calendar.events.delete({
+      calendarId: 'primary',
+      eventId: EventId
+    })
 
+  }
+
+  async editEvent(startD, endD, summary, description, eventId){
+    const insert = await gapi.client.calendar.events.patch
+    ({
+      calendarId: 'primary',
+      eventId: eventId,
+      start: {
+        // dateTime: hoursFromNow(2),
+        dateTime: startD,
+        timeZone: 'America/Denver'
+      }, 
+      end: {
+        // dateTime: hoursFromNow(3),
+        dateTime: endD,
+        timeZone: 'America/Denver'
+      }, 
+      summary: summary,
+      description: description
+    })
+
+    await this.getCalendar();
+  }
 }
 
-const hoursFromNow = (n) => new Date(Date.now() + n * 1000 * 60 * 60 ).toISOString();
+// const hoursFromNow = (n) => new Date(Date.now() + n * 1000 * 60 * 60 ).toISOString();

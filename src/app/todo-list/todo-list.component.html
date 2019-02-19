@@ -7,7 +7,7 @@ To Do List
   <div class="row">
       <div class="col">
           <div *ngFor="let todo of todos | async">
-              <div class="card mb-3" (click)="onSelect(todo)">
+              <div [ngClass]="{completed: todo.completed}" class="card mb-3" (click)="onSelect(todo)">
                 <div class="card-body">
                   <h5 class="card-title">{{todo.body}}</h5>
                 </div>

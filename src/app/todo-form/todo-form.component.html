@@ -15,11 +15,10 @@
         </div>
 
         <div class="form-group">
-            <label for="completed">Completed: </label>
-            <input type="checkbox" class="form-control" id="completed"
+                <mat-checkbox  id="completed"
                     [(ngModel)]="model.completed" name="completed"
-                    #completed="ngModel">
-        </div>
+                    #completed="ngModel">Completed?</mat-checkbox>
+            </div>
         <div class="form-group">
             <label for='goalId'>Goal: </label>
             <select [(ngModel)]="model.goalId"  name="goalId" id="goalId" required #goal="ngModel">
@@ -31,8 +30,9 @@
             Goal is required
         </div>
         
-        <button type="submit" [disabled]="!todoForm.valid">add</button>
+        <button type="submit" class="btn btn-secondary" [disabled]="!todoForm.valid">add</button>
 
     </form>    
+
 </div>
 

@@ -28,21 +28,21 @@
             Description is required
         </div>
 
-      <div class="form-group">
-          <label for="dueDate">Due Date : </label>
-          <input type="text" class="form-control" id="dueDate"
-            [(ngModel)]="model.dueDate" name="dueDate"
-            #dueDate="ngModel">
-      </div>
+      <mat-form-field>
+          <input matInput [matDatepicker]="dueDate" placeholder="due Date"
+                  (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+          <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
+          <mat-datepicker #dueDate></mat-datepicker>
+      </mat-form-field>
 
         <div class="form-group">
-          <label for="completed">Completed: </label>
-          <input type="checkbox" class="form-control" id="completed"
+          <mat-checkbox  id="completed"
             [(ngModel)]="model.completed" name="completed"
-            #completed="ngModel">
+            #completed="ngModel">Completed?</mat-checkbox>
         </div>
       
-      <button type="submit" [disabled]="!goalForm.valid">add</button>
+      <button type="submit" class="btn btn-secondary" [disabled]="!goalForm.valid">add</button>
+
 
   </form>   
 

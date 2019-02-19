@@ -8,5 +8,87 @@
         <p class="card-text">Start: {{item.start.dateTime | date:'short'}}</p>
         <p class="card-text">End: {{item.end.dateTime | date:'short'}}</p>
     </div>
-
+    <button type="button" class="btn btn-danger"(click)="DeleteEvent()">Delete Event</button>
+    <button type="button" class="btn btn-secondary" (click)="editing()">Edit</button>
 </div>
+<br/>
+<form #calForm="ngForm" *ngIf="edit" (ngSubmit)="UpdateCalItem()">
+
+        <div class="form-group">
+            <label for="summary">Summary: </label>
+            <input type="text" class="form-control" id="summary"
+                    required
+                    [(ngModel)]="model.summary" name="summary"
+                    #summary="ngModel">
+        </div>
+        <div [hidden]="summary.valid || summary.pristine"
+        class="alert alert-danger">
+            Summary is required
+        </div>
+
+
+        <div class="form-group">
+            <label for="description">Description: </label>
+            <input type="text" class="form-control" id="description"
+                    [(ngModel)]="model.description" name="description"
+                    #summary="ngModel">
+        </div>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="start" placeholder="Start Date"
+                        (dateInput)="addStartEvent('input', $event)" (dateChange)="addEndEvent('change', $event)"
+                        required
+                        >
+                <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+                <mat-datepicker #start></mat-datepicker>
+            </mat-form-field>
+            <br/>
+                <mat-form-field>
+                        <mat-select placeholder="Hour" [(ngModel)]="model.startH"  name="startH" id="startH" #startH="ngModel"
+                        required>
+                            <mat-option *ngFor="let item of hours" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                        <mat-select placeholder="minute" [(ngModel)]="model.startM"  name="startM" id="startM" #startM="ngModel" required>
+                            <mat-option *ngFor="let item of minutes" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                </mat-form-field>
+            <br/>
+
+
+            <mat-form-field>
+                    <input matInput [matDatepicker]="end" placeholder="End Date"
+                            (dateInput)="addEndEvent('input', $event)" (dateChange)="addEndEvent('change', $event)" required>
+                    <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                    <mat-datepicker #end></mat-datepicker>
+            </mat-form-field>
+            <br/>
+            <mat-form-field>
+                    <mat-select placeholder="Hour" [(ngModel)]="model.endH"  name="endH" id="endH" #endH="ngModel" required>
+                        <mat-option *ngFor="let item of hours" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                    <mat-select placeholder="minute" [(ngModel)]="model.endM"  name="endM" id="endM" #endM="ngModel" required>
+                        <mat-option *ngFor="let item of minutes" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+            </mat-form-field>
+        <br/>
+            
+            <div class="example-events">
+                <div *ngFor="let e of events">{{e}}</div>
+            </div>
+
+
+        <button type="submit" [disabled]="!calForm.valid">update calendar event</button>
+
+    </form>    
