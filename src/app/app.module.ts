@@ -20,7 +20,7 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MyMaterialModule} from "./material.module"
+import { MyMaterialModule } from "./material.module"
 
 // Add your project credentials
 // Then use it in the imports section below

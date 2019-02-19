@@ -17,8 +17,8 @@
     <a class="navbar-brand" routerLink='/calendar'>Calendar</a>
     <a class="navbar-brand" routerLink='/goals'>Goals</a>
     <a class="navbar-brand" routerLink='/todos'>To Dos</a>
-    <button type="button" class="btn btn-secondary" (click)="auth.login()" class="button">Login with Google</button>
+    <button type="button" mat-flat-button  (click)="auth.login()" class="button">Login with Google</button>
 
-    <button type="button" class="btn btn-secondary" (click)="auth.logout()" class="button">Logout</button>
+    <button type="button" mat-flat-button (click)="auth.logout()" class="button">Logout</button>
 </nav>
 <router-outlet></router-outlet>

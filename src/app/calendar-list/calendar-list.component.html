@@ -1,5 +1,5 @@
 <div *ngIf="auth.user$ | async">
-        <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>
+        <button mat-flat-button color="accent" (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>
         <!-- <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button> -->
 </div>
 
